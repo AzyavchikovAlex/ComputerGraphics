@@ -14,9 +14,9 @@ public class RGBSetupComponent extends SetupComponentImpl implements SetupCompon
 
     public RGBSetupComponent() {
         Label label = new Label("RGB");
-        setupSlider(redSlider, 0, 255);
-        setupSlider(greenSlider, 0, 255);
-        setupSlider(blueSlider, 0, 255);
+        setupSlider(redSlider, 0, 256);
+        setupSlider(greenSlider, 0, 256);
+        setupSlider(blueSlider, 0, 256);
         modifyLabels();
         this.getChildren().addAll(label,
                 manageSliderLayout(redSlider, redLabel),

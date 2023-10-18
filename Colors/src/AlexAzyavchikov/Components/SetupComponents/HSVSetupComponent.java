@@ -14,7 +14,7 @@ public class HSVSetupComponent extends SetupComponentImpl {
 
     public HSVSetupComponent() {
         Label label = new Label("HSV");
-        setupSlider(hueSlider, 0, 359);
+        setupSlider(hueSlider, 0, 360);
         setupSlider(saturationSlider, 0, 100);
         setupSlider(valueSlider, 0, 100);
         modifyLabels();

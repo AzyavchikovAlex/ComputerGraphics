@@ -3,6 +3,7 @@ package AlexAzyavchikov.Mediator;
 import AlexAzyavchikov.Components.Component;
 import AlexAzyavchikov.Components.Draw.DrawComponent;
 import AlexAzyavchikov.Components.SetupComponents.CMYKSetupComponent;
+import AlexAzyavchikov.Components.SetupComponents.ColorPickerComponent;
 import AlexAzyavchikov.Components.SetupComponents.HSVSetupComponent;
 import AlexAzyavchikov.Components.SetupComponents.RGBSetupComponent;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ public class Paint implements Mediator {
     private RGBSetupComponent rgbSetupComponent;
     private HSVSetupComponent hsvSetupComponent;
     private CMYKSetupComponent cmykSetupComponent;
+    private ColorPickerComponent colorPickerComponent;
 
     @Override
     public void registerComponent(Component component) {
@@ -29,6 +31,7 @@ public class Paint implements Mediator {
             case "RGBSetup" -> rgbSetupComponent = (RGBSetupComponent) component;
             case "HSVSetup" -> hsvSetupComponent = (HSVSetupComponent) component;
             case "CMYKSetup" -> cmykSetupComponent = (CMYKSetupComponent) component;
+            case "ColorPicker" -> colorPickerComponent = (ColorPickerComponent) component;
         }
     }
 
@@ -38,6 +41,7 @@ public class Paint implements Mediator {
         rgbSetupComponent.setColor(color);
         hsvSetupComponent.setColor(color);
         cmykSetupComponent.setColor(color);
+        colorPickerComponent.setColor(color);
     }
 
     @Override
@@ -45,6 +49,7 @@ public class Paint implements Mediator {
         drawComponent.setFillColor(color);
         rgbSetupComponent.setColor(color);
         hsvSetupComponent.setColor(color);
+        colorPickerComponent.setColor(color);
     }
 
     @Override
@@ -52,11 +57,7 @@ public class Paint implements Mediator {
         drawComponent.setFillColor(color);
         rgbSetupComponent.setColor(color);
         cmykSetupComponent.setColor(color);
-    }
-
-    @Override
-    public Color getFillColor() {
-        return drawComponent.getFillColor();
+        colorPickerComponent.setColor(color);
     }
 
     @Override
@@ -64,6 +65,7 @@ public class Paint implements Mediator {
         setConnections();
         manageLayout(stage);
         stage.show();
+        setFillColor(Color.BLACK);
     }
 
     private void manageLayout(Stage stage) {
@@ -72,14 +74,14 @@ public class Paint implements Mediator {
 
         stage.setScene(new Scene(root));
         stage.setTitle("Colors");
-        stage.setMinHeight(400);
-        stage.setMinWidth(600);
+        stage.setMinHeight(600);
+        stage.setMinWidth(1000);
     }
 
     private HBox manageSettingsLayout() {
         HBox settings = new HBox();
-        makeHResizable(rgbSetupComponent, hsvSetupComponent, cmykSetupComponent);
-        settings.getChildren().addAll(rgbSetupComponent, hsvSetupComponent, cmykSetupComponent);
+        makeHResizable(rgbSetupComponent, hsvSetupComponent, cmykSetupComponent, colorPickerComponent);
+        settings.getChildren().addAll(rgbSetupComponent, hsvSetupComponent, cmykSetupComponent, colorPickerComponent);
         HBox.setHgrow(settings, Priority.NEVER);
         return settings;
     }

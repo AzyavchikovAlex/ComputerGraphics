@@ -3,6 +3,7 @@ package AlexAzyavchikov;
 
 import AlexAzyavchikov.Components.Draw.DrawComponent;
 import AlexAzyavchikov.Components.SetupComponents.CMYKSetupComponent;
+import AlexAzyavchikov.Components.SetupComponents.ColorPickerComponent;
 import AlexAzyavchikov.Components.SetupComponents.HSVSetupComponent;
 import AlexAzyavchikov.Components.SetupComponents.RGBSetupComponent;
 import AlexAzyavchikov.Mediator.Mediator;
@@ -23,6 +24,7 @@ public class Main extends Application {
         mediator.registerComponent(new RGBSetupComponent());
         mediator.registerComponent(new HSVSetupComponent());
         mediator.registerComponent(new CMYKSetupComponent());
+        mediator.registerComponent(new ColorPickerComponent());
 
         mediator.createGUI(stage);
     }

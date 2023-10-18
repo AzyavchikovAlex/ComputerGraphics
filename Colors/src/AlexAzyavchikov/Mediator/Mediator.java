@@ -12,7 +12,5 @@ public interface Mediator {
     void setRGBAndHsvFillColor(Color color);
     void setRGBAndCMYKFillColor(Color color);
 
-    Color getFillColor();
-
     void createGUI(Stage stage);
 }
