@@ -67,7 +67,7 @@ class Solution:
 
 # image_path = None
 image_path = easygui.fileopenbox(title='Select image', filetypes=["*.jpg"])
-image = cv.imread("image2.jpg" if image_path is None else image_path, cv.IMREAD_GRAYSCALE)
+image = cv.imread("./Images/chirch.jpg" if image_path is None else image_path, cv.IMREAD_GRAYSCALE)
 
 root = Tk()
 root.title = "Lab2"
